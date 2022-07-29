@@ -1,5 +1,4 @@
 from one_py_sdk.clientsdk import ClientSdk
-from one_py_sdk.shared.constants import Environment 
 
 client =ClientSdk(cacheTimeout=50)#creates client targeting production with 50 second in memory cache for REST requests 
 client.Authentication.GetToken("userName", "password")
