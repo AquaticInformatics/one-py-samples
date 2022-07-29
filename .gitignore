@@ -1,1 +1,5 @@
 .venv/
+creds.py
+*.csv
+*.whl
+*.pyc
