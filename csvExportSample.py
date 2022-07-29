@@ -39,7 +39,7 @@ print(f"Completed export of all worksheet data from {startDate.date()} to {endDa
 
 client.Exporter.ExportWorksheet(f"ExportWSDataEnteredSince{str(updatedAfter)[:11]}.csv", plantId, startDate, endDate, updatedAfter) # passing in this third date parameter will only give you data that was updated since that time
 
-client.Exporter.ExportWorksheet("ExportFourHour.csv", plantId, startDate, endDate, None, 4) #providing a worksheet type will only export row info for that type of worksheet
+client.Exporter.ExportWorksheet("ExportDaily.csv", plantId, startDate, endDate, None, 4) #providing a worksheet type will only export row info for that type of worksheet
 print(f"Completed export of daily worksheet data from {startDate.date()} to {endDate.date()}")
 
 client.Exporter.ExportWorksheet("ExportFourHour.csv", plantId, startDate, endDate, None, 3)
