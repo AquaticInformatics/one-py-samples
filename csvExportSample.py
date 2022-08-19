@@ -1,9 +1,11 @@
 from datetime import datetime, timezone
 from one_py_sdk.clientsdk import ClientSdk
+from creds import *
+from one_py_sdk.shared.constants import *
+import json
 
-
-client =ClientSdk() #Use for production environment 
-#client =ClientSdk(cacheTimeout=30) Use for production with 30 second in memory cache of requests
+#client =ClientSdk() #Use for production environment 
+client =ClientSdk(cacheTimeout=30) #Use for production with 30 second in memory cache of requests
 
 if (client.Authentication.GetToken("userName", "password")):  # Supply username and password here
     print("Authenticated successfully")
@@ -14,13 +16,13 @@ print(client.Authentication.Token)
 
 
 startDate =datetime(2022,7,1,20,13,1,0,timezone.utc)
-endDate =datetime(2022,7,16,20,13,1,0,timezone.utc)
+endDate =datetime(2022,8,16,20,13,1,0,timezone.utc)
 updatedAfter =datetime(2022,7,16,20,13,1,0,timezone.utc)
-plantId=""
-client.Exporter.ExportColumnDetails("ColumnInfoAll.csv", plantId)
+
+client.Exporter.ExportColumnDetails("ColumnInfoJustTetAll.csv", plantId, None, "MyView") #Only exports columns in specified view
 print(f"Completed export of column information for all worksheet types for plant {plantId}")
 
-client.Exporter.ExportColumnDetails("ColumnInfoDaily.csv", plantId, 4) #providing a worksheet type will only export column info for that type of worksheet
+client.Exporter.ExportColumnDetails("ColumnInfoDaily.csv", plantId, 4,  "MyView") #providing a worksheet type and view will only export column info in views with that name for that type of worksheet
 print(f"Completed export of column information for daily worksheets for plant {plantId}")
 
 client.Exporter.ExportColumnDetails("ColumnInfoFourHour.csv", plantId, 3) 
