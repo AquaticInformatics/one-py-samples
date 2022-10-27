@@ -1,9 +1,8 @@
 from datetime import datetime, timezone
 from one_py_sdk.clientsdk import ClientSdk
-from creds import *
-from one_py_sdk.shared.constants import *
-import json
 
+import json
+plantId="insert Guid for plant here"
 #client =ClientSdk() #Use for production environment 
 client =ClientSdk(cacheTimeout=30) #Use for production with 30 second in memory cache of requests
 
@@ -14,6 +13,11 @@ else:
 print(client.Authentication.UserName)
 print(client.Authentication.Token)
 
+
+client.Exporter.ExportLimits("Limits.csv", plantId) #Exports limit columns for all worksheet types
+
+
+client.Exporter.ExportLimits("LimitsForFourHour.csv", plantId, 3)#providing a worksheet type and view will only export limits in worksheets of the specified time interval
 
 startDate =datetime(2022,7,1,20,13,1,0,timezone.utc)
 endDate =datetime(2022,8,16,20,13,1,0,timezone.utc)
