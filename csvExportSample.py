@@ -23,10 +23,10 @@ startDate =datetime(2022,7,1,20,13,1,0,timezone.utc)
 endDate =datetime(2022,8,16,20,13,1,0,timezone.utc)
 updatedAfter =datetime(2022,7,16,20,13,1,0,timezone.utc)
 
-client.Exporter.ExportColumnDetails("ColumnInfoJustMyViewAll.csv", plantId, None, "Influent") #Only exports columns in specified view
+client.Exporter.ExportColumnDetails("ColumnInfoJustMyViewAll.csv", plantId, None, "MyView") #Only exports columns in specified view
 print(f"Completed export of column information for all worksheet types for plant {plantId}")
 
-client.Exporter.ExportColumnDetails("ColumnInfoDailyJustMyView.csv", plantId, 4,  "Influent") #providing a worksheet type and view will only export column info in views with that name for that type of worksheet
+client.Exporter.ExportColumnDetails("ColumnInfoDailyJustMyView.csv", plantId, 4,  "MyView") #providing a worksheet type and view will only export column info in views with that name for that type of worksheet
 print(f"Completed export of column information for daily worksheets for plant {plantId}")
 
 client.Exporter.ExportColumnDetails("ColumnInfoFourHour.csv", plantId, 3) 
