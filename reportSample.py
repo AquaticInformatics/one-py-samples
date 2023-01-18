@@ -1,8 +1,9 @@
 from datetime import datetime, timedelta, timezone
 from one_py_sdk.clientsdk import ClientSdk
 from one_py_sdk.shared.constants import Environment
-from creds import *
-client =ClientSdk() #Use for production environment with no cache
+userName = "userName"
+password = "password"
+client = ClientSdk()  # Use for production environment with no cache
 # Use for feature environment with 50 second in memory cache of API requests
 # client = ClientSdk(Environment.get('feature'), 50)
 # client =ClientSdk(Environment.get('integration')) #Use for integration environment no cache
