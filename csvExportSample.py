@@ -1,13 +1,14 @@
 from datetime import datetime, timezone
 from one_py_sdk.clientsdk import ClientSdk
 import json
+from one_py_sdk.shared.constants import *
 
 #client =ClientSdk() #Use for production environment 
-client =ClientSdk(cacheTimeout=30) #Use for production with 30 second in memory cache of requests
+client =ClientSdk(Environment.get("integration"), cacheTimeout=30) #Use for production with 30 second in memory cache of requests
 
-plantId="providePlantGuidHere"
+plantId="a5799a5c-905c-41e9-8587-de72e438762d"
     
-if (client.Authentication.GetToken("UserName", "Password")):# Supply username and password here
+if (client.Authentication.GetToken("aqijrshared", "$uckyPass1")):# Supply username and password here
     print("Authenticated successfully")
 else:
     print("Authentication failed")
@@ -20,9 +21,9 @@ client.Exporter.ExportLimits("Limits.csv", plantId) #Exports limit columns for a
 
 client.Exporter.ExportLimits("LimitsForFourHour.csv", plantId, 3)#providing a worksheet type and view will only export limits in worksheets of the specified time interval
 
-startDate =datetime(2022,7,1,20,13,1,0,timezone.utc)
-endDate =datetime(2022,11,16,20,13,1,0,timezone.utc)
-updatedAfter =datetime(2022,8,16,20,13,1,0,timezone.utc)
+startDate =datetime(2022,12,1)
+endDate =datetime(2022,12,30)
+updatedAfter =datetime(2022,11,17)
 
 client.Exporter.ExportColumnDetails("ColumnInfoJustMyViewAll.csv", plantId, None, "MyView") #Only exports columns in specified view for every worksheet type
 print(f"Completed export of column information for all worksheet types for plant {plantId}")
